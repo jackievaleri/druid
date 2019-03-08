@@ -34,8 +34,11 @@ print(example_druid)
 # test tfidf_matrix argument
 example_druid <- concoct(dge_matrix = query_matrix, tfidf_matrix = "", tfidf_crossproduct = DRUID::cmap_druid$cpm, num_random = 10000, druid_direction = "neg", fold_thr = 0, pvalue_thr = 0.05, entrez = gset)
 
-# test crossproduct argument
+# test crossproduct argument with empty string
 example_druid <- concoct(dge_matrix = query_matrix, tfidf_matrix = DRUID::cmap_druid$tfidf, tfidf_crossproduct = "", num_random = 10000, druid_direction = "neg", fold_thr = 0, pvalue_thr = 0.05, entrez = gset)
+# test crossproduct argument with empty vector
+empty_cross_test <- vector(mode="numeric", length=0)
+example_druid <- concoct(dge_matrix = query_matrix, tfidf_matrix = DRUID::cmap_druid$tfidf, tfidf_crossproduct = empty_cross_test, num_random = 10000, druid_direction = "neg", fold_thr = 0, pvalue_thr = 0.05, entrez = gset)
 
 # test num_random argument
 example_druid <- concoct(dge_matrix = query_matrix, tfidf_matrix = DRUID::cmap_druid$tfidf, tfidf_crossproduct = DRUID::cmap_druid$cpm, num_random = 0, druid_direction = "neg", fold_thr = 0, pvalue_thr = 0.05, entrez = gset)
