@@ -1,4 +1,4 @@
-## testing with version 1.0.0
+## testing with version 1.1.0
 
 devtools::install_github("diogocamacho/druid")
 library(DRUID)
@@ -10,7 +10,11 @@ query_matrix <- matrix(1, ncol = 2, nrow = length(gset))
 query_matrix[, 2] <- 0
 query_matrix[sample(x = seq(1, length(gset)), size = 0.25 * length(gset)), 1] <- -1
 
-example_druid <- concoct(dge_matrix = query_matrix, tfidf_matrix = DRUID::cmap_druid$tfidf, tfidf_crossproduct = DRUID::cmap_druid$cpm, num_random = 10000, druid_direction = "neg", fold_thr = 0, pvalue_thr = 0.05, entrez = gset)
+example_druid <- concoct(dge_matrix = query_matrix, tfidf_matrix = DRUID::cmap_druid$tfidf, num_random = 10000, druid_direction = "neg", fold_thr = 0, pvalue_thr = 0.05, entrez = gset)
+# problems: cant leave out crossproduct without getting "Error in concoct(dge_matrix = query_matrix, tfidf_matrix = DRUID::cmap_druid$tfidf,  : 
+# TF-IDF matrix is of wrong type. Please revise.""
+# also, example concoct wrapper needs to be changed to leave out crossproduct in README
+
 print(example_druid)
 
 example_druid <- example_druid %>% 
