@@ -25,6 +25,7 @@ concoct <- function(dge_matrix,
   
   # run checks ----
   message("Checks and balances...")
+  message('hello can i edit this')
   if(missing(dge_matrix)) stop("Need differential expression data.")
   if(ncol(dge_matrix) != 2) stop("Differential expression data needs to be Nx2 matrix.")
   if(missing(tfidf_matrix)) stop("Need TF-IDF matrix.")
