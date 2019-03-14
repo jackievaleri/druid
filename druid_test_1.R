@@ -12,6 +12,11 @@ query_matrix[sample(x = seq(1, length(gset)), size = 0.25 * length(gset)), 1] <-
 
 tfidf_mat = DRUID::cmap_druid$tfidf
 print(class(tfidf_mat))
+print(class(tfidf_mat) != 'dgCMatrix')
+print(class(tfidf_mat) != 'matrix')
+print((class(tfidf_mat) != "dgCMatrix") | (class(tfidf_mat) != "matrix"))
+print((class(tfidf_mat) != "dgCMatrix") & (class(tfidf_mat) != "matrix"))
+print((class(tfidf_mat) != "dgCMatrix") | (class(tfidf_mat) != "Matrix"))
 
 example_druid <- concoct(dge_matrix = query_matrix, tfidf_matrix = tfidf_mat, num_random = 10000, druid_direction = "neg", fold_thr = 0, pvalue_thr = 0.05, entrez = gset)
 # problems: cant leave out crossproduct without getting "Error in concoct(dge_matrix = query_matrix, tfidf_matrix = DRUID::cmap_druid$tfidf,  : 
