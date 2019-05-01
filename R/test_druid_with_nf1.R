@@ -45,4 +45,4 @@ for (i in 1:num_genes) {
   print(entrez_nf1_genes[i])
 }
 
-druid_results = DRUID::concoct(dge_matrix = dge_mat, entrez = entrez_nf1_genes, tfidf_matrix = DRUID::)
+druid_results = DRUID::concoct(dge_matrix = dge_mat, entrez = entrez_nf1_genes)
